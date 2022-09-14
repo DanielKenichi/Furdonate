@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {FiArrowLeft} from "react-icons/fi";
 
 import './styles.css';
@@ -12,16 +12,19 @@ import logoImg from '../../assets/Furdonate.svg';
 export default function Register(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [discord, setDiscord] = useState('');
+    const [discord_server, setDiscord] = useState('');
     const [country, setCountry] = useState('');
+
+    const navigate = useNavigate();
 
     async function handleRegister(e) {
         e.preventDefault();
-        const data = {name, email, discord, country};
+        const data = {name, email, discord_server, country};
         try{
             const response = await api.post('/createArtist', data);
             
             alert(`Seu Id de acesso: ${response.data.id} `);
+            navigate("/login");
         }
         catch(err){
             alert("Erro no cadastro");
@@ -52,7 +55,7 @@ export default function Register(){
                         onChange= {e => setEmail(e.target.value)}
                     />
                     <input placeholder="Link para discord"
-                        value = {discord}
+                        value = {discord_server}
                         onChange= {e => setDiscord(e.target.value)}
                     />
                     <input placeholder="País"

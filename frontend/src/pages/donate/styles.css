@@ -49,11 +49,12 @@
     margin-top: 32px;
 }
 
-.donate-container ul:hover{
+.donate-container ul li:hover{
     filter: brightness(90%)
 }
 
 .donate-container ul li{
+    margin-top: 32px;
     background: #fff;
     padding: 16px;
     border-radius: 8px;

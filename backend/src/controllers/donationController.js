@@ -2,10 +2,10 @@ const connection = require('../data/connection');
 
  module.exports = {
     async CreateDonation(request, response) {
-        const {nickname, value, message, artistName} = request.body;
+        const {artist, nickname, value, message} = request.body;
 
         const a_id = await connection('artist')
-        .where('name', artistName)
+        .where('name', artist)
         .select('id')
         .first();
 
