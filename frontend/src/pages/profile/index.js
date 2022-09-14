@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FiPower } from "react-icons/fi"
-
+import { Link } from "react-router-dom";
 import './styles.css';
 
 import api from '../../services/api';
@@ -29,9 +29,11 @@ export default function Profile()
             <header>
                 <img src={logoImg} alt="Furdonate"/>
                 <span>Bem vindo, {artistName} UwU</span>
-                <button>
-                    <FiPower size={18} color="#E02041"/>
-                </button>
+                <Link to="/login">
+                    <button>
+                        <FiPower size={18} color="#E02041"/>
+                    </button>
+                </Link>
             </header>
             <h1>Doações Recebidas</h1>
             <ul>
