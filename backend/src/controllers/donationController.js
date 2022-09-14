@@ -2,8 +2,19 @@ const connection = require('../data/connection');
 
  module.exports = {
     async CreateDonation(request, response) {
-        const {nickname, value, message} = request.body;
-        const artist_id = request.headers.authorization;
+        const {nickname, value, message, artistName} = request.body;
+
+        const a_id = await connection('artist')
+        .where('name', artistName)
+        .select('id')
+        .first();
+
+        if(!a_id){
+            return response.status(404).json({ error: "No artist with this name was found"});
+        }
+        const artist_id = a_id.id;
+
+        console.log(artist_id);
 
         const [id] = await connection('donation').insert({
             nickname, 
