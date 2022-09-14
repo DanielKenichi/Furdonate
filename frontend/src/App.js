@@ -1,12 +1,11 @@
 import React from 'react';
-import Login from './pages/login';
+import SwitchRoute from './routes';
+
 import './global.css';
 
 function App() {
   return (
-    <Login title="Furdonate">
-
-    </Login>
+    <SwitchRoute/>
   );
 }
 
